@@ -1,13 +1,14 @@
 close all
 clear all
 
+set(0,'DefaultFigureWindowStyle','docked')
 %% Initilisation of image
-I = imread('1300.jpg');
+I = imread('571.jpg');
 GSI = rgb2gray(I);
 
 for i=1:784
     for j=1:784
-        if GSI(i,j) < 150
+        if GSI(i,j) < 125
             GSI(i,j) = 0;
         end
     end
@@ -24,7 +25,7 @@ for t = 10:10:80
 end
 for i = 1:8
     z = 40;
-    while GSI(y1(1,i),x1(1,i)) == 0
+    while GSI(y1(1,i),x1(1,i)) == 0 && dist(x1(1,i),y1(1,i)) < 392
         x1(1,i) = round(392 + (z * cos (deg2rad(i * 10))));
         y1(1,i) = round(392 - (z * sin (deg2rad(i * 10))));
         z = z + 1;
@@ -41,7 +42,7 @@ for t = 10:10:80
 end
 for i = 1:8
     z = 40;
-    while GSI(y2(1,i),x2(1,i)) == 0
+    while GSI(y2(1,i),x2(1,i)) == 0 && dist(x2(1,i),y2(1,i)) < 392
         x2(1,i) = round(392 - (z * sin (deg2rad(i * 10))));
         y2(1,i) = round(392 - (z * cos (deg2rad(i * 10))));
         z = z + 1;
@@ -58,7 +59,7 @@ for t = 10:10:80
 end
 for i = 1:8
     z = 35;
-    while GSI(y3(1,i),x3(1,i)) == 0
+    while GSI(y3(1,i),x3(1,i)) == 0 && dist(x3(1,i),y3(1,i)) < 392
         x3(1,i) = round(392 + (z * sin (deg2rad(i * 10))));
         y3(1,i) = round(392 + (z * cos (deg2rad(i * 10))));
         z = z + 1;
@@ -75,7 +76,7 @@ for t = 10:10:80
 end
 for i = 1:8
     z = 40;
-    while GSI(y4(1,i),x4(1,i)) == 0
+    while GSI(y4(1,i),x4(1,i)) == 0 && dist(x4(1,i),y4(1,i)) < 392
         x4(1,i) = round(392 - (z * cos (deg2rad(i * 10))));
         y4(1,i) = round(392 + (z * sin (deg2rad(i * 10))));
         z = z + 1;
@@ -112,7 +113,7 @@ if miny1 < miny2
 else
     counter = 1;
     for i = 1:8
-        if miny1 == y2(1,i)
+        if miny2 == y2(1,i)
             break
         else
             counter = counter + 1;
@@ -210,6 +211,11 @@ plot([maxCoordY(1) minCoordY(1)], [maxCoordY(2) minCoordY(2)], 'w-', 'LineWidth'
 line1 = [maxCoordX(1) maxCoordX(2) minCoordX(1) minCoordX(2)];
 line2 = [maxCoordY(1) maxCoordY(2) minCoordY(1) minCoordY(2)];
 
-[x_int y_int] = line_intersection(line1,line2);
+[x_int, y_int] = line_intersection(line1,line2);
 
 plot(x_int, y_int, 'wx', 'MarkerSize', 20);
+
+%% Distance function
+function distance = dist(x , y)
+    distance = sqrt((392 - x)^2 + (392 - y)^2);
+end
