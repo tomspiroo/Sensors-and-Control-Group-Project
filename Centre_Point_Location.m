@@ -15,6 +15,20 @@ for i=1:784
 end
 %Diameter of the centre circle is approx 80 pixles
 
+% Making a white circle around the ultrasound image
+xCenter = 392;
+yCenter = 392;
+radius = 391;
+theta = linspace(0, 2*pi, round(4 * pi * radius));
+xc = radius * cos(theta) + xCenter;
+yc = radius * sin(theta) + yCenter;
+for k = 1 : length(xc)
+    row = round(yc(k));
+    col = round(xc(k));
+    GSI(row, col) = 255;
+end
+
+
 %% Calculating points around lumen
 % Top right points
 x1 = zeros(1,8);
