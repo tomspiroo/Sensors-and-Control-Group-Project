@@ -9,11 +9,9 @@ gui.RawImage.ImageSource = img;
 %Change ProcImage same as above, with handle gui.ProcImage. Centrepoint
 %same as above with gui.CentreImage
 GSI_Masked = imread('1200p.jpg');
-SmallConvert = cat(3, GSI_Masked,GSI_Masked,GSI_Masked);
-gui.ProcImage.ImageSource = SmallConvert;
+gui.ProcImage.ImageSource = GSI_Masked;
 
-CentrePointLoc = imread('1200c.jpg');
-gui.CentreImage.ImageSource = CentrePointLoc;
+CentrePointLoc =
 %Change rotation value
 gui.RotationOut.Value = 145;
 
