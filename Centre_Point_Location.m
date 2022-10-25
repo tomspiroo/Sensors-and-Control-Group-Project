@@ -3,7 +3,7 @@ clear all
 
 set(0,'DefaultFigureWindowStyle','docked')
 %% Initilisation of image
-I = imread('571.jpg');
+I = imread('1800.jpg');
 GSI = rgb2gray(I);
 
 for i=1:784
@@ -104,11 +104,12 @@ axis on
 hold on
 for g = 1:8
     plot(x1(:,g),y1(:,g),'r.', 'MarkerSize', 10);
-    plot(x2(:,g),y2(:,g),'y.', 'MarkerSize', 10);
     plot(x3(:,g),y3(:,g),'g.', 'MarkerSize', 10);
     plot(x4(:,g),y4(:,g),'b.', 'MarkerSize', 10);
 end
-
+for g = 2:8
+    plot(x2(:,g),y2(:,g),'y.', 'MarkerSize', 10);
+end
 %% Finding maximums and minimums
 
 % Minimum y (up)
@@ -149,7 +150,7 @@ if maxy1 > maxy2
         end
     end
     maxCoordY = [x3(1,counter2) maxy1];
-    plot(maxCoordY(1,1),maxCoordY(1,2), 'w.', 'MarkerSize',20);
+    plot(maxCoordY(1,1),maxCoordY(1,2), 'r.', 'MarkerSize',20);
 else
     counter2 = 1;
     for i = 1:8
@@ -160,7 +161,7 @@ else
         end
     end
     maxCoordY = [x4(1,counter2) maxy2];
-    plot(maxCoordY(1,1),maxCoordY(1,2), 'w.', 'MarkerSize',20);
+    plot(maxCoordY(1,1),maxCoordY(1,2), 'r.', 'MarkerSize',20);
 end
 
 % Min x (left)
@@ -176,7 +177,7 @@ if minx1 < minx2
         end
     end
     minCoordX = [minx1 y2(1,counter)];
-    plot(minCoordX(1,1),minCoordX(1,2), 'w.', 'MarkerSize',20);
+    plot(minCoordX(1,1),minCoordX(1,2), 'r.', 'MarkerSize',20);
 else
     counter = 1;
     for i = 1:8
@@ -187,7 +188,7 @@ else
         end
     end
     minCoordX = [minx2 y4(1,counter)];
-    plot(minCoordX(1,1),minCoordX(1,2), 'w.', 'MarkerSize',20);
+    plot(minCoordX(1,1),minCoordX(1,2), 'r.', 'MarkerSize',20);
 end
         
 % Maximum x (right)
@@ -203,7 +204,7 @@ if maxx1 > maxx2
         end
     end
     maxCoordX = [maxx1 y1(1,counter)];
-    plot(maxCoordX(1,1),maxCoordX(1,2), 'w.', 'MarkerSize',20);
+    plot(maxCoordX(1,1),maxCoordX(1,2), 'r.', 'MarkerSize',20);
 else
     counter3 = 1;
     for i = 1:8
@@ -214,7 +215,7 @@ else
         end
     end
     maxCoordX = [maxx2 y3(1,counter3)];
-    plot(maxCoordX(1,1),maxCoordX(1,2), 'w.', 'MarkerSize',20);
+    plot(maxCoordX(1,1),maxCoordX(1,2), 'r.', 'MarkerSize',20);
 end
 
 %% Centre point from min and max values
@@ -227,7 +228,7 @@ line2 = [maxCoordY(1) maxCoordY(2) minCoordY(1) minCoordY(2)];
 
 [x_int, y_int] = line_intersection(line1,line2);
 
-plot(x_int, y_int, 'wx', 'MarkerSize', 20);
+plot(x_int, y_int, 'rx', 'MarkerSize', 20);
 
 %% Distance function
 function distance = dist(x , y)
