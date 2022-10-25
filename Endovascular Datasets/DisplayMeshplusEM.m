@@ -3,8 +3,10 @@ clear;
 
 load Mesh_Soft_EM_Mod_0601;
 em = [];
+currentdir = cd;
 for i = 0:1:2002
-    read = table2array(readtable(string(i) + '.txt','Delimiter',' ','ReadVariableNames',false));
+    filepath = strcat('logfile_2014-12-05_17-32-16_Soft_pullback_1\EM\',string(i),'.txt');
+    read = table2array(readtable(filepath,'Delimiter',' ','ReadVariableNames',false));
     for j = 1:1:size(read,2)
         em(i + 1,j) = read(1,j);
     end
