@@ -7,13 +7,16 @@ Jeremy Mansfield 13204312
 About the files in repository:
 These files were worked on using Matlab. The files for the most part are 
 testing and colaborative files that eventually make up the 
-Centre_Point_Location.m file, thus this will be heavily commented on and
+Centre_Point_Location.m file, thus this file will be heavily commented on
 and of the files that are within this will not have detailed comments 
 throughout.
+When running the Centre_Point_Location.m file make sure all the files
+present in the Github are added to the Path.
 The only scripts that have not been created by the group is the 
 DisplayMesh.m file (located in the Endovascular Datasets folder) and the 
 line_intersection.m function filethat has appropriate referencing within 
 the file.
+
 
 Angle Functions tests folder:
 These functions are used to test the lumen searching functions which are
@@ -21,6 +24,7 @@ put together in the Edge_Detection_v2.m file and the Centre_Point_location.m
 file.
 
 Folders added to the Endovascular Datasets folder:
+
     Centre Point Images folder:
     This folder contains figures saved as jpeg images with the centre point
     plotted on the image. It also contains the function that converts the 
@@ -45,8 +49,6 @@ lumen. This is evident in the centre point images folder.
 
 Future implimentations intended for the project:
 - Fixing the centrepoint location of certain images so all are accurate
-- Getting the GUI to incorporate a video like display that shows the whole
-  travelled path through the aorta
 - Plotting the new updated planned path into the Mesh display of the aorta
 - Implimenting the programmed path planning onto a real catheter that is 
   fed through a 3D printed aorta
