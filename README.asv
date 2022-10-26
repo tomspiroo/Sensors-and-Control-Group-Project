@@ -6,11 +6,11 @@ Jeremy Mansfield 13204312
 
 About the files in repository:
 These files were worked on using Matlab. The files for the most part are 
-testing and colaborative files that eventually make up the 
-Centre_Point_Location.m file, thus this file will be heavily commented on
-and of the files that are within this will not have detailed comments 
-throughout.
-When running the Centre_Poi
+testing and colaborative files that eventually make up the Main.m file, 
+thus this file will be heavily commented onand of the files that are 
+within this will not have detailed comments throughout.
+When running the Main.m file make sure all the files present in the Github
+are added to the Path.
 The only scripts that have not been created by the group is the 
 DisplayMesh.m file (located in the Endovascular Datasets folder) and the 
 line_intersection.m function filethat has appropriate referencing within 
@@ -19,8 +19,7 @@ the file.
 
 Angle Functions tests folder:
 These functions are used to test the lumen searching functions which are
-put together in the Edge_Detection_v2.m file and the Centre_Point_location.m
-file.
+put together in the Edge_Detection_v2.m file and the Main.m file.
 
 Folders added to the Endovascular Datasets folder:
 
@@ -39,7 +38,7 @@ The .mlapp file:
 This file is the GUI set up using Matlab's app designer where the design
 of the GUI is made as well as specified callbacks that add functionalities
 if an action is input by the user. This GUI is implimented in the
-GUI_test.m file.
+GUI_test.m and Main.m file.
 
 Errors found within the assignment:
 Due to the methodology of the edge detection of the lumen there are 
