@@ -2,7 +2,7 @@
 %Open app with handle "GUI"
 gui = srcapp
 %Change number depending on what image you want processed
-ImageNumber = 1200;
+ImageNumber = 1800;
 %Change RawImage
 gui.RawImage.ImageSource = strcat(num2str(ImageNumber),'.jpg');
 %OR
