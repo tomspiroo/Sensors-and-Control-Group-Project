@@ -1,5 +1,6 @@
 # Sensors-and-Control-Group-Project
 By:
+Group number 7
 Thomas Spiritosanto 13930603
 Jeremy Mansfield 13204312
 
