@@ -1,6 +1,7 @@
 close all
 clear all
 %% Initilisation of image
+
 I = imread('1200.jpg');
 GSI = rgb2gray(I);
 

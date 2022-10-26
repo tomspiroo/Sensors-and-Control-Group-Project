@@ -3,9 +3,13 @@ clear all
 
 set(0,'DefaultFigureWindowStyle','docked')
 %% Initilisation of image
+
+% Read the designated original image and convert it to grey scale
 I = imread('1800.jpg');
 GSI = rgb2gray(I);
 
+% Apply the mask that turns all values less than 150 to 0, making them
+% black
 for i=1:784
     for j=1:784
         if GSI(i,j) < 125
@@ -30,6 +34,16 @@ end
 
 
 %% Calculating points around lumen
+
+% Setting up the x and y matrixes and making 8 points that are 40 pixles from
+% the centre of the image at different angles. Angles of 0 and 90 degrees
+% are not included since it will hit the intense points of the cross hairs
+% of the ultrasound camera. This occurs for four quadrants of the images
+% starting from its center.
+% After which a for loop iterates the point along the its angle until it
+% reaches an intense point and stores the x and y coordinate within an
+% array.
+
 % Top right points
 x1 = zeros(1,8);
 y1 = zeros(1,8);
@@ -98,6 +112,10 @@ for i = 1:8
 end
 
 %% Plotting points
+
+% This section plots the processed image and plots all of the edge
+% detection points from the stored x and y values, thus lining the inner
+% ring of the lumen.
 figure (1)
 imshow(GSI);
 axis on
@@ -106,11 +124,13 @@ for g = 1:8
     plot(x1(:,g),y1(:,g),'r.', 'MarkerSize', 10);
     plot(x3(:,g),y3(:,g),'g.', 'MarkerSize', 10);
     plot(x4(:,g),y4(:,g),'b.', 'MarkerSize', 10);
-end
-for g = 2:8
     plot(x2(:,g),y2(:,g),'y.', 'MarkerSize', 10);
 end
+
 %% Finding maximums and minimums
+
+% This section determines the maximum and minimum points stored within the
+% x and y arrays our of all four quadrants.
 
 % Minimum y (up)
 miny1 = min(y1);
@@ -220,6 +240,10 @@ end
 
 %% Centre point from min and max values
 
+% This section takes the maximums and minimums and drawns a line between
+% them, this it used the line_intersection function to get the centrepoint
+% location
+
 plot([maxCoordX(1) minCoordX(1)], [maxCoordX(2) minCoordX(2)], 'w-', 'LineWidth', 1);
 plot([maxCoordY(1) minCoordY(1)], [maxCoordY(2) minCoordY(2)], 'w-', 'LineWidth', 1);
 
@@ -231,6 +255,10 @@ line2 = [maxCoordY(1) maxCoordY(2) minCoordY(1) minCoordY(2)];
 plot(x_int, y_int, 'rx', 'MarkerSize', 20);
 
 %% Distance function
+
+% This is a brief function to determine the distance between an inputted x
+% and y point.
+
 function distance = dist(x , y)
     distance = sqrt((392 - x)^2 + (392 - y)^2);
 end
